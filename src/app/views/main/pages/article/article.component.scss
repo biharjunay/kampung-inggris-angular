@@ -1,0 +1,7 @@
+.carousel-card {
+  flex: 0 0 calc((100% - 32px) / 3);
+
+  @media screen and (max-width: 768px) {
+    flex: 0 0 calc((100% ) / 1);
+  }
+}

@@ -1,0 +1,117 @@
+<h2 class="mb-5">Dashboard</h2>
+<div class="row">
+
+  <div class="col-md-4 mb-3">
+    <div class="card">
+      <p class="m-3">Registration Image</p>
+      <div class="d-flex flex-column align-items-center">
+        <img [src]="datas.heroData.registration_image | imageUrl" alt="image" height="100px">
+        <div class="my-3 d-flex justify-content-center gap-3">
+          <button class="btn btn-success" *ngIf="datas.heroData.registration_image"
+            (click)="previewImage(datas.heroData.registration_image)">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="btn btn-warning" (click)="editHeroImage(datas.heroData.registration_image, 'registration_image')">
+            <i class="fas fa-edit"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card">
+      <p class="m-3">Header Image</p>
+      <div class="d-flex flex-column align-items-center">
+        <img [src]="datas.heroData.header_image| imageUrl" alt="image" height="100px">
+        <div class="my-3 d-flex justify-content-center gap-3">
+          <button class="btn btn-success" *ngIf="datas.heroData.header_image"
+            (click)="previewImage(datas.heroData.header_image)">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="btn btn-warning" (click)="editHeroImage(datas.heroData.header_image, 'header_image')">
+            <i class="fas fa-edit"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 mb-3">
+    <div class="card">
+      <p class="m-3">About Image</p>
+      <div class="d-flex flex-column align-items-center">
+        <img [src]="datas.heroData.about_image | imageUrl" alt="image" height="100px">
+        <div class="my-3 d-flex justify-content-center gap-3">
+          <button class="btn btn-success" *ngIf="datas.heroData.about_image"
+            (click)="previewImage(datas.heroData.about_image)">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="btn btn-warning" (click)="editHeroImage(datas.heroData.about_image, 'about_image')">
+            <i class="fas fa-edit"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card rounded-4">
+      <div class="d-flex justify-content-between p-3">
+        <h4 class="fw-bold">Affiliated Brand</h4>
+        <button class="btn btn-dark" (click)="addBrandImage()">
+          <i class="fas fa-plus"></i> Tambah data
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (!manyLoading.brandLoading) {
+            <tr *ngFor="let i of datas.brandData">
+              <td class="w-100 px-3">
+                <img [src]="i?.image_url | imageUrl" alt="image" height="100px">
+              </td>
+              <td class="align-middle">
+                <span class="d-flex gap-3 m-auto">
+                  <button class="btn btn-success" (click)="previewImage(i!.image_url)">
+                    <div class="fas fa-eye"></div>
+                  </button>
+                  <button class="btn btn-warning" (click)="editBrandImage(i!)">
+                    <div class="fas fa-edit"></div>
+                  </button>
+                  <button class="btn btn-danger" (click)="deleteBrandImage(i!.id)">
+                    <div class="fas fa-trash-can"></div>
+                  </button>
+                </span>
+              </td>
+            </tr>
+            } @else if (this.manyLoading.brandLoading) {
+            <tr *ngFor="let i of [1,2,3,4]">
+              <td>
+                <ngx-skeleton-loader [theme]="{width: '100px', height: '100px'}"></ngx-skeleton-loader>
+              </td>
+              <td>
+                <ngx-skeleton-loader></ngx-skeleton-loader>
+              </td>
+            </tr>
+            }
+            @if (!manyLoading.brandLoading && !datas.brandData.length) {
+            <tr>
+              <td colspan="2" class="text-center">Tidak ada data</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>

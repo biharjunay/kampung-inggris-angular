@@ -1,0 +1,34 @@
+<div class="modal-header d-flex justify-content-between">
+  <h4 class="mb-0">{{editMode ? 'Edit' : 'Tambah'}} Program</h4>
+  <button class="btn" (click)="closeModal()">
+    <i class="fas fa-xmark"></i>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group mb-3">
+    <label for="name">Nama Program</label>
+    <input type="text" id="name" class="form-control" [(ngModel)]="form.name">
+  </div>
+  <div class="form-group mb-3" *ngIf="form.type_id === 1">
+    <label for="total_student">Total Siswa</label>
+    <input type="number" id="total_student" class="form-control" [(ngModel)]="form.total_student">
+  </div>
+  <div class="form-group mb-3" *ngIf="form.type_id === 2">
+    <label for="review">Review</label>
+    <input type="text" id="review" class="form-control" [(ngModel)]="form.review">
+  </div>
+  <div class="form-group mb-3" *ngIf="form.type_id === 2">
+    <label for="total_minute">Total Menit</label>
+    <input type="text" id="total_minute" class="form-control" [(ngModel)]="form.total_minute">
+  </div>
+  <div class="form-group mb-3">
+    <label for="price">Harga</label>
+    <input type="text" id="price" class="form-control" [(ngModel)]="form.price">
+  </div>
+  <div class="form-group mb-3">
+    <label for="discount">Discount</label>
+    <input type="text" id="discount" class="form-control" [(ngModel)]="form.discount_price">
+  </div>
+  <button class="btn btn-success w-100" (click)="saveData()" [disabled]="loading">{{loading ? 'Tunggu' : 'Simpan'}}</button>
+</div>

@@ -1,0 +1,16 @@
+<div class="sidebar bg-success" id="sidebar" [class.collapsed]="isCollapsed" (click)="stopPropagation($event)" #sidebar>
+  <div class="d-flex justify-content-between p-3">
+    <img src="assets/images/logo-white.png" alt="brand" width="150" routerLink="/admin" style="cursor: pointer;">
+    <i class="fas fa-bars h4" id="admin-btn" (click)="toggleSidebar()"></i>
+  </div>
+  <div>
+    <a class="navlink" [routerLink]="i.url" routerLinkActive="active" *ngFor="let i of navItems">
+      <i [class]="i.icon"></i>
+      <span class="ms-3">{{i.name}}</span>
+    </a>
+  </div>
+</div>
+
+<div class="content" [class.collapsed]="isCollapsed">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,54 @@
+<div class="modal-header d-flex justify-content-between">
+  <h4 class="mb-0">{{editMode ? 'Edit' : 'Tambah'}} Video Galeri</h4>
+  <button class="btn" (click)="closeModal()">
+    <i class="fas fa-xmark"></i>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-lg-6">
+      <label for="">Thumbnail</label>
+      <div class="border border-primary w-100 rounded-3 d-flex justify-content-center align-items-center p-3 mb-3"
+        (click)="fileInput.click()" imgUpload (dropFiles)="handleDropImage($event)"
+        style="border-style: dashed !important; height: 200px; cursor: pointer;">
+        <div class="d-flex flex-column text-center" *ngIf="!imageUrl">
+          <i class="fas fa-upload fs-1"></i>
+          <span class="fs-4 mt-3">Upload Gambar</span>
+        </div>
+        <img class="w-100 object-fit-contain h-100" *ngIf="imageUrl" [src]="imageUrl" alt="empty image">
+      </div>
+      <div class="form-group mb-3">
+        <label for="name">Judul</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="form.title">
+      </div>
+      <div class="form-group mb-3">
+        <label for="subtitle">Subjudul</label>
+        <input type="text" id="subtitle" class="form-control" [(ngModel)]="form.subtitle">
+      </div>
+      <div class="form-group mb-3">
+        <label for="participant-name">Nama Peserta</label>
+        <input type="text" id="participant-name" name="participant-name" class="form-control" [(ngModel)]="form.participant_name">
+      </div>
+      <div class="form-group mb-3">
+        <label for="program-name">Nama Program</label>
+        <input type="text" id="program-name" class="form-control" [(ngModel)]="form.program_name">
+      </div>
+      <div class="form-group mb-3">
+        <label for="video-url">Video Url</label>
+        <input type="text" id="video-url" class="form-control" [(ngModel)]="form.video_url">
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label for="message">Pesan</label>
+        <textarea name="message" id="message" class="form-control" [(ngModel)]="form.message" rows="10"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-{{editMode ? 'warning' : 'success'}}" (click)="submit()" [disabled]="loading">{{loading ? 'Tunggu' : editMode ? 'Edit' :'Simpan'}}</button>
+</div>
+
+<input #fileInput class="d-none" type="file" name="file" id="file" accept="image/*" (change)="handleImageInput($event)">

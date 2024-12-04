@@ -1,0 +1,127 @@
+<div class="p-3 p-md-5" style="background-color: #F1FFFD;">
+  <div class="row">
+    <div class="col-md-3 mb-3 d-flex align-items-center">
+      <div class="w-100 h-100" *ngIf="loading">
+        <ngx-skeleton-loader [theme]="{height: '100%', 'min-height': '300px'}"></ngx-skeleton-loader>
+      </div>
+      <img *ngIf="!loading" class="w-100 rounded-3" [src]="data?.image_url | imageUrl" alt="image">
+    </div>
+    <div class="col-md-9 mb-3 d-flex flex-column justify-content-between">
+      <div>
+        <h4 class="fw-bold">Program {{data?.type?.name}} - {{data?.name}}</h4>
+        <span class="d-flex flex-column flex-md-row align-items-md-center">
+          <span>
+            <img src="assets/images/icons/book-icon.svg" alt="book icon">
+            <b class="ms-3">{{data?.program_title}}</b>
+          </span>
+          <span>
+            <span class="text-danger mx-3">&bull;</span>
+            <span>Published by : <a class="text-success">{{data?.published_by}}</a></span>
+          </span>
+        </span>
+      </div>
+      <div>
+        <h6 class="fw-bold mt-3">Apa yang akan anda dapatkan?</h6>
+        <div class="row">
+
+          @if (loading) {
+            <div class="col-md-4 mt-3" *ngFor="let item of [1,2,3]">
+              <div class="bg-white rounded-3 p-3 h-100">
+                <div class="d-flex align-items-center">
+                  <ngx-skeleton-loader [theme]="{width: '30px', height: '30px'}"></ngx-skeleton-loader>
+                  <span>
+                    <ngx-skeleton-loader [theme]="{width: '100px', 'margin-left': '10px'}"                    ></ngx-skeleton-loader>
+                  </span>
+                </div>
+                <p class="mt-3 mb-0">
+                  <ngx-skeleton-loader></ngx-skeleton-loader>
+                  <ngx-skeleton-loader [theme]="{margin: 0}"></ngx-skeleton-loader>
+                </p>
+              </div>
+            </div>
+          } @else {
+          <div class="col-md-4 mt-3" *ngFor="let item of data?.benefits | slice:0:3">
+            <div class="bg-white rounded-3 p-3 h-100">
+              <div class="d-flex align-items-center">
+                <img [src]="item.icon_url | imageUrl" class="object-fit-contain" alt="certificate-icon" width="32" height="32">
+                <span class="fw-bold ms-3">{{item?.name}}</span>
+              </div>
+              <p class="mt-3 mb-0">{{item.description}}</p>
+            </div>
+          </div>
+          }
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row" *ngIf="!loading">
+    <div class="col-md-3 mb-3" *ngFor="let item of data?.benefits | slice:3">
+      <div class="bg-white rounded-3 p-3 h-100">
+        <div class="d-flex align-items-center">
+          <img [src]="item.icon_url | imageUrl" class="object-fit-contain" alt="certificate-icon" width="32" height="32">
+          <span class="fw-bold ms-3">{{item?.name}}</span>
+        </div>
+        <p class="mt-3 mb-0">{{item?.description}}</p>
+      </div>
+    </div>
+  </div>
+  <h4 class="text-center mt-5 fw-semibold">Pilih Program Kelas</h4>
+  <div class="row mt-3">
+    <div class="col-md-{{data?.programs?.length === 1 ? 12 : data?.programs?.length === 2 ? 6 : data?.programs?.length === 3 ? 4 : 3}} mb-3" *ngFor="let item of data?.programs">
+      <div class="card rounded-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="fw-semibold text-secondary ms-3">{{data?.name}}</span>
+          <span class="p-2 fw-bold text-white" style="background-color: #008F8F; border-radius: 0 10px 0 10px;">Diskon 20%</span>
+        </div>
+        <div class="card-body">
+          <h4>{{item.name}}</h4>
+          <div class="d-flex gap-3 mt-3">
+            <span style="font-size: 14px;">
+              <i class="fas fa-layer-plus border p-1 rounded-3"
+                style="color: #4282FF; border-color: #4282FF !important;"></i>
+              5 Benefits
+            </span>
+            <span style="font-size: 14px;">
+              <i class="fas fa-user-group border p-1 rounded-3"
+                style="color: #B275F4; border-color: #B275F4 !important;"></i>
+              120+ Students
+            </span>
+          </div>
+          <div class="d-flex justify-content-between mt-3 align-items-center">
+            <del>{{item?.price | rupiah}}</del>
+            <h4 class="text-success mb-0 fw-bold">{{item.discount_price | rupiah}}</h4>
+          </div>
+          <button class="btn btn-success mt-3 w-100 rounded-3">Daftar Sekarang</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="my-5 px-3 px-md-5">
+  <h4 class="fw-bold mb-3">Program {{data?.type?.name}}</h4>
+  <div class="d-flex align-items-center gap-3">
+    <div>
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;" (click)="scrollCarousel(false, carousel)">
+        <i class="fas fa-angle-left"></i>
+      </button>
+    </div>
+    <div id="carousel" #carousel class="overflow-x-hidden">
+      <div class="d-flex gap-4">
+        @if (productLoading) {
+        <app-program-loading *ngFor="let item of [1,2,3,4]"></app-program-loading>
+        } @else {
+        <app-program-card *ngFor="let item of productData" [data]="item" (clickDetail)="seeDetail($event)"></app-program-card>
+        }
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;" (click)="scrollCarousel(true, carousel)">
+        <i class="fas fa-angle-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

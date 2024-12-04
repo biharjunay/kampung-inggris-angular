@@ -1,0 +1,22 @@
+<div class="card" style="width: 20rem;">
+  <img [src]="data.image_url | imageUrl" width="317" height="248" class="card-img-top object-fit-cover" alt="image">
+  <div class="card-body border-top border-bottom">
+    <div class="d-flex justify-content-between">
+      <b>{{data.name}}</b>
+      <span>{{data.rating}} <i class="fas fa-star text-warning"></i></span>
+    </div>
+    <div class="d-flex gap-3 mt-3">
+      <span style="font-size: 14px;">
+        <i class="fas fa-layer-plus border p-1 rounded-3" style="color: #4282FF; border-color: #4282FF !important;"></i>
+        {{data.benefits_count}} Benefits
+      </span>
+      <span style="font-size: 14px;">
+        <i class="fas fa-user-group border p-1 rounded-3" style="color: #B275F4; border-color: #B275F4 !important;"></i>
+        {{data.total_student || 0}}+ Students
+      </span>
+    </div>
+  </div>
+  <div class="card-body">
+    <button class="btn btn-success w-100" (click)="seeDetail()">Lihat Detail Program</button>
+  </div>
+</div>

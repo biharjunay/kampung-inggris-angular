@@ -1,0 +1,20 @@
+<div class="vh-100" style="background: green; background-position: center center; background-size: cover;">
+  <div class="h-100 d-flex justify-content-center align-items-center">
+    <div class="card bg-white  p-4 d-flex flex-column align-items-center">
+      <img class="mb-3" src="assets/images/logo.png" width="200px" alt="brand">
+      <form [formGroup]="form">
+        <div class="form-group mb-3">
+          <label class="">Email</label>
+          <input type="email" name="email" id="email" class="form-control" formControlName="email">
+          <small class="text-danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">Email wajib diisi</small>
+        </div>
+        <div class="form-group mb-3">
+          <label class="">Password</label>
+          <input type="password" name="password" id="password" class="form-control" formControlName="password">
+          <small class="text-danger" *ngIf="password?.invalid && (password?.dirty || password?.touched)">Password wajib diisi</small>
+        </div>
+      </form>
+      <button class="btn btn-success rounded-3" (click)="login()">{{loading ? 'Tunggu' : 'Login'}}</button>
+    </div>
+  </div>
+</div>

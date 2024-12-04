@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-md sticky-top bg-white">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/logo.png" alt="Bootstrap" width="126">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto gap-3 fw-semibold">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home" fragment="why-we">Why WE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/program">Program & Biaya </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home" fragment="testimoni">Testimoni</a>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-3">
+        <button class="btn btn-outline-success" routerLink="/article">Blog</button>
+        <button class="btn btn-success" routerLink="/register">Pendaftaran</button>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<div class="py-5 d-flex flex-column align-items-center justify-content-center" style="background-color: #CDFFD2;">
+  <div class="d-flex gap-5">
+    <img src="assets/images/icons/whatsapp.svg" alt="image">
+    <img src="assets/images/icons/tik-tok.svg" alt="image">
+    <img src="assets/images/icons/instagram.svg" alt="image">
+    <img src="assets/images/icons/youtube.svg" alt="image">
+  </div>
+  <div class="d-flex gap-4 mt-4">
+    <b>About WE English</b>
+      <b>FAQs</b>
+      <b>Terms & Condition</b>
+      <b>Privacy Policy</b>
+  </div>
+  <p class="text-secondary mt-3">© 2024 WE English All rights reserved</p>
+</div>

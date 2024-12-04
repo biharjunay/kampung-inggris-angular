@@ -1,0 +1,62 @@
+<div class="p-3 p-md-5" style="background-color: #F1FFFD;">
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <img class="w-100" src="/assets/images/article.png" alt="article">
+    </div>
+    <div class="col-md-8 mb-3">
+      <h4>{{articleDetail?.title}}</h4>
+      <span>
+        <img src="assets/images/icons/clock.svg" alt="book icon">
+        <b class="ms-3">Posted on {{articleDetail?.created_at | date: 'MMMM d, YYYY'}}</b>
+      </span>
+      <span>
+        <span class="text-danger mx-3">&bull;</span>
+        <span>Published by : <a href="" class="text-success">{{articleDetail?.published_by}}</a></span>
+      </span>
+      <p class="mt-2" style="white-space: pre;">{{articleDetail?.content}}</p>
+    </div>
+    <!-- <div class="col-md-3 mb-3 d-flex flex-column justify-content-center">
+      <div class="card gap-3 p-3">
+        <div class="pb-3 w-100 border-bottom">
+          <button class="btn btn-success w-100">Send Comment</button>
+        </div>
+        <button class="btn btn-outline-dark">Newer</button>
+        <button class="btn btn-outline-dark">Older</button>
+      </div>
+    </div> -->
+
+  </div>
+</div>
+
+<div class="p-3 p-md-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h4 class="mb-0">Lihat Lebih Banyak Artikel Kami:</h4>
+    <span class="d-flex gap-3">
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;" (click)="scrollCarousel(false)">
+        <i class="fas fa-angle-left"></i>
+      </button>
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;" (click)="scrollCarousel(true)">
+        <i class="fas fa-angle-right"></i>
+      </button>
+    </span>
+  </div>
+
+  <div #carouselContainer class="mt-3 overflow-hidden">
+    <div class="d-flex gap-3">
+      <div class="card carousel-card" *ngFor="let item of articleData">
+        <div class="p-3 border-bottom">
+          <img class="w-100" [src]="item.image_url | imageUrl" alt="image">
+        </div>
+        <div class="card-body">
+          <h6>{{item.title}}</h6>
+          <span>
+            <img src="assets/images/icons/clock.svg" alt="clock">
+            <span class="ms-3">Posted on : {{item.created_at | date: 'dd/MM/YYYY'}}</span>
+          </span>
+          <p class="fw-bold fst-italic mt-3">Published by : <a href="" class="text-dark">{{item.published_by}}</a></p>
+          <button class="btn btn-success w-100" (click)="selectArticle(item)">Lihat Artikel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

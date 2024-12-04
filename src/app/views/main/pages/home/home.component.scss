@@ -1,0 +1,46 @@
+::ng-deep #header {
+  height: 575px;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+
+  .position-absolute {
+    background: linear-gradient(to right, #000000CC, #62626200);
+  }
+}
+
+.brand-slider-container {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+.brand-slider {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 10s linear infinite;
+  will-change: transform;
+}
+
+.brand-logo {
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.brand-slider-container:hover .brand-slider {
+  animation-play-state: paused;
+}
+
+.carousel {
+  transition: transform .5s ease;
+}

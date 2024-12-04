@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <div class="modal-header d-flex justify-content-between">
+    <h4 class="modal-title" id="myModalLabel">Confirm</h4>
+    <button type="button" class="btn" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+      <i class="fas fa-xmark"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{message}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" id="modal-btn-no" (click)="click(false)">No</button>
+    <button type="button" class="btn btn-primary rounded-3" id="modal-btn-si" (click)="click(true)">Yes</button>
+  </div>
+</div>

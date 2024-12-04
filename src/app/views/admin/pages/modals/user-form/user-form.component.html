@@ -1,0 +1,23 @@
+<div class="modal-header d-flex justify-content-between">
+  <h4 class="mb-0">{{editMode ? 'Edit' : 'Tambah'}} User</h4>
+  <button class="btn" (click)="closeModal()">
+    <i class="fas fa-xmark"></i>
+  </button>
+</div>
+
+<div class="modal-body d-flex flex-column align-items-center">
+  <div class="form-group w-100 mb-3">
+    <label for="name">Nama</label>
+    <input type="text" class="form-control" name="name" [(ngModel)]="form.name">
+  </div>
+  <div class="form-group w-100 mb-3">
+    <label for="program-name">Email</label>
+    <input type="email" class="form-control" name="program-name" [(ngModel)]="form.email">
+  </div>
+  <div class="form-group w-100 mb-3">
+    <label for="program-name">Password</label>
+    <input type="text" class="form-control" name="program-name" [(ngModel)]="form.password">
+  </div>
+  <button class="btn btn-{{editMode ? 'warning' : 'success'}} w-100" (click)="submit()">{{loading ? 'Tunggu' : editMode ? 'Edit Data' : 'Tambah Data'}}</button>
+</div>
+<input #fileInput class="d-none" type="file" name="file" id="file" accept="image/*" (change)="handleImageInput($event)">

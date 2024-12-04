@@ -5,3 +5,8 @@
 ::ng-deep.ng-select-container {
   border-radius: 1px !important;
 }
+
+
+.danger ::ng-deep.ng-select-container {
+  border-color: #dc3545 !important;
+}

@@ -1,0 +1,19 @@
+<div class="modal-body">
+  <div class="d-flex justify-content-between align-items-center">
+    <span>{{editMode ? 'Ubah' : 'Tambah'}} Gambar</span>
+    <button class="btn" (click)="closeModal()">
+      <i class="fas fa-xmark"></i>
+    </button>
+  </div>
+  <div class="position-relative d-flex flex-column align-items-center">
+    <div class="border border-primary w-100 rounded-3 d-flex justify-content-center align-items-center p-3" (click)="fileInput.click()" imgUpload (dropFiles)="handleDropImage($event)" style="border-style: dashed !important; height: 400px; cursor: pointer;">
+      <div class="d-flex flex-column text-center" *ngIf="!imageUrl">
+        <i class="fas fa-upload fs-1"></i>
+        <span class="fs-4 mt-3">Upload Gambar</span>
+      </div>
+      <img class="w-100 object-fit-contain h-100" *ngIf="imageUrl" [src]="imageUrl" alt="empty image">
+    </div>
+    <button class="btn btn-success mt-3" (click)="submit()" [disabled]="!file">{{loading ? 'Tunggu' : 'Upload image'}}</button>
+  </div>
+</div>
+<input #fileInput class="d-none" type="file" name="file" id="file" accept="image/*" (change)="handleImageInput($event)">

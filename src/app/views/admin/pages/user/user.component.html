@@ -1,0 +1,56 @@
+<h2 class="mb-5">Users</h2>
+<div class="card">
+  <div class="d-flex justify-content-between align-items-center p-3">
+    <h4 class="mb-0">List User</h4>
+    <button class="btn btn-warning rounded-3" (click)="addUser()">
+      <i class="fas fa-square-plus"></i> Tambah User
+    </button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-responsive table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (!loading) {
+          <tr *ngFor="let item of data | paginate: {itemsPerPage: pagination.per_page, currentPage: pagination.current_page, totalItems: pagination.total}; let i = index">
+            <td>{{(i + 1) + (pagination.current_page - 1) * 10}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.role}}</td>
+            <td>
+              <span class="d-flex gap-3">
+                <button class="btn btn-sm btn-warning" (click)="editUser(item)">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteData(item)">
+                  <i class="fas fa-trash-can"></i>
+                </button>
+              </span>
+            </td>
+          </tr>
+        } @else {
+          <tr *ngFor="let item of [1,2,3,4]">
+            <td *ngFor="let i of [1,2,3,4]">
+              <ngx-skeleton-loader></ngx-skeleton-loader>
+            </td>
+          </tr>
+        }
+        @if (!loading && data.length == 0) {
+          <tr>
+            <td colspan="7" class="text-center">Tidak ada data</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+      <pagination-controls (pageChange)="loadData($event)"></pagination-controls>
+    </div>
+  </div>
+</div>

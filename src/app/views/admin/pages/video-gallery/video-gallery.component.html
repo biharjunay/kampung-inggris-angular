@@ -1,0 +1,71 @@
+<h2 class="mb-5">Video Gallery</h2>
+<div class="card">
+  <div class="d-flex justify-content-between align-items-center p-3">
+    <h4 class="mb-0">List Video</h4>
+    <button class="btn btn-warning rounded-3" (click)="addVideoGallery()">
+      <i class="fas fa-square-plus"></i> Tambah Video
+    </button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-responsive table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Thumbnail</th>
+          <th>Judul</th>
+          <th>Subjudul</th>
+          <th>Nama Peserta</th>
+          <th>Nama Program</th>
+          <th>Pesan</th>
+          <th>Video URL</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (!loading) {
+        <tr
+          *ngFor="let item of data | paginate: {itemsPerPage: pagination.per_page, currentPage: pagination.current_page, totalItems: pagination.total}; let i = index">
+          <td>{{(i + 1) + (pagination.current_page - 1) * 10}}</td>
+          <td>
+            <img class="object-fit-contain" [src]="item.thumbnail_url | imageUrl" width="20" height="20" alt="icon">
+          </td>
+          <td>{{item.title}}</td>
+          <td>{{item.subtitle}}</td>
+          <td>{{item.participant_name}}</td>
+          <td>{{item.program_name}}</td>
+          <td>{{item.message}}</td>
+          <td>
+            <button class="btn btn-sm btn-primary" [popover]="item.video_url" triggers="mouseenter:mouseleave" (click)="openLink(item.video_url)">
+              <i class="fa-solid fa-external-link"></i>
+            </button>
+          </td>
+          <td>
+            <span class="d-flex gap-3">
+              <button class="btn btn-sm btn-warning" (click)="editVideoGallery(item)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="deleteData(item)">
+                <i class="fas fa-trash-can"></i>
+              </button>
+            </span>
+          </td>
+        </tr>
+        } @else {
+        <tr *ngFor="let item of [1,2,3,4]">
+          <td *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
+            <ngx-skeleton-loader></ngx-skeleton-loader>
+          </td>
+        </tr>
+        }
+        @if (!loading && data.length == 0) {
+        <tr>
+          <td colspan="9" class="text-center">Tidak ada data</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+      <pagination-controls (pageChange)="loadData($event)"></pagination-controls>
+    </div>
+  </div>
+</div>
