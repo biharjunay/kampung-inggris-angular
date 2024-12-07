@@ -1,19 +1,21 @@
 <div class="p-3 p-md-5" style="background-color: #F1FFFD;">
-  <div class="row">
+  <div class="row" *ngIf="articleDetail">
     <div class="col-md-4 mb-3">
       <img class="w-100" src="/assets/images/article.png" alt="article">
     </div>
     <div class="col-md-8 mb-3">
-      <h4>{{articleDetail?.title}}</h4>
+      <h4>{{articleDetail.title}}</h4>
       <span>
         <img src="assets/images/icons/clock.svg" alt="book icon">
-        <b class="ms-3">Posted on {{articleDetail?.created_at | date: 'MMMM d, YYYY'}}</b>
+        <b class="ms-3">Posted on {{articleDetail.created_at | date: 'MMMM d, YYYY'}}</b>
       </span>
       <span>
         <span class="text-danger mx-3">&bull;</span>
-        <span>Published by : <a href="" class="text-success">{{articleDetail?.published_by}}</a></span>
+        <span>Published by : <a href="" class="text-success">{{articleDetail.published_by}}</a></span>
       </span>
-      <p class="mt-2" style="white-space: pre;">{{articleDetail?.content}}</p>
+      <!-- <br> -->
+      <button class="btn btn-sm btn-warning ms-3"><i class="fas fa-external-link"></i></button>
+      <p class="mt-2" style="white-space: pre;">{{articleDetail.content}}</p>
     </div>
     <!-- <div class="col-md-3 mb-3 d-flex flex-column justify-content-center">
       <div class="card gap-3 p-3">
@@ -26,6 +28,7 @@
     </div> -->
 
   </div>
+  <div class="text-center fw-bold fs-1" *ngIf="!articleDetail">Tidak ada artikel</div>
 </div>
 
 <div class="p-3 p-md-5">

@@ -1,4 +1,4 @@
-import { Environment } from "../interfaces/env.interface";
+import { Environment } from "@interfaces/env.interface";
 
 export default {
   appUrl: 'http://localhost:8000/api',

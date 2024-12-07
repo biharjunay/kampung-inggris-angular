@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { inject } from "@angular/core";
-import env from "../environments/environment";
 import { Observable } from "rxjs";
 import { Response } from "../interfaces/interface";
+import env from "environments/environment";
 
 export abstract class BaseService<T, B = { [key: string]: any }> {
   protected abstract endpoint: string

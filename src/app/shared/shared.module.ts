@@ -4,8 +4,6 @@ import { NgSelectModule } from "@ng-select/ng-select";
 import { COMPONENTS } from "../components/components";
 import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
 import { RupiahPipe } from "../pipe/rupiah.pipe";
-import { BsModalService } from "ngx-bootstrap/modal";
-import { AlertService } from "../services/alert.service";
 import { ImageUrlPipe } from "../pipe/image-url.pipe";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ImageUploaderDirective } from "app/directives/image-uploader.directive";

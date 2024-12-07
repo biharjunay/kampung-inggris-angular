@@ -1,6 +1,8 @@
 import { Component, HostListener } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import _nav from "app/_nav";
+import { User } from "@interfaces/user.interface";
+import { AuthService } from "@services/auth.service";
+import _nav, { INavData } from "app/_nav";
 
 @Component({
   selector: 'app-admin',
@@ -8,9 +10,13 @@ import _nav from "app/_nav";
   styleUrl: 'admin.component.scss'
 })
 export class AdminComponent {
+  protected user: User
   protected readonly navItems = _nav
+  public isCollapsed = false;
 
-  isCollapsed = false;
+  constructor(private authService: AuthService) {
+    this.user = authService.getUser()!
+  }
 
   toggleSidebar(): void {
     this.isCollapsed = !this.isCollapsed;
@@ -36,5 +42,13 @@ export class AdminComponent {
 
   stopPropagation(event: MouseEvent): void {
     event.stopPropagation();
+  }
+
+  canAccessMenu() {
+    return this.navItems.filter(item => item.roles.includes(this.user.role))
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }

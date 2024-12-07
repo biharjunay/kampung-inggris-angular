@@ -13,15 +13,10 @@ export class LoginComponent implements OnInit {
   public loading: boolean = false
 
   constructor(
-    private _alertService: AlertService,
     private _authService: AuthService,
     private _router: Router,
     private _fb: FormBuilder
   ) {
-    // this.form = new FormGroup({
-    //   email: new FormControl('', [Validators.required]),
-    //   password: new FormControl('', [Validators.required])
-    // })
     this.form = _fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -37,14 +32,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (this._authService.isAuthenticated()) this._router.navigateByUrl('/admin', {replaceUrl: true})
+    if (this._authService.isAuthenticated()) this._router.navigateByUrl('/admin', {replaceUrl: true})
   }
 
   public login(): void {
     this.loading = true
     this._authService.login(this.form.getRawValue()).subscribe({
       next: () => {
-        this._router.navigateByUrl(this._authService.redirectUrl)
+        this._router.navigateByUrl('/admin/dashboard')
       }
     }).add(() => {
       this.loading = false

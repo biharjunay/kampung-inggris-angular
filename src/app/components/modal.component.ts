@@ -22,7 +22,6 @@ export abstract class ModalComponent {
   }
 
   handleDropImage(event: { file: File, url: string }): void {
-    console.log(event)
     const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/bmp', 'image/svg+xml'];
 
     if (!event.file || !validImageTypes.includes(event.file.type)) {

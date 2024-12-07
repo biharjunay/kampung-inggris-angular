@@ -79,7 +79,6 @@
           <th>Harga</th>
           <th>Diskon</th>
           <th>%</th>
-          <th>Diskon Aktif</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -88,13 +87,12 @@
         <tr *ngFor="let item of programData; let i = index">
           <td>{{i+1}}</td>
           <td>{{item.name}}</td>
-          <td *ngIf="item.type_id == 1">{{item.total_student}}</td>
-          <td *ngIf="item.type_id == 2">{{item.total_minute}}</td>
-          <td *ngIf="item.type_id == 2">{{item.review}}</td>
+          <td *ngIf="singleData.type?.id === 1">{{item.total_student}}</td>
+          <td *ngIf="singleData.type?.id === 2">{{item.total_minute}}</td>
+          <td *ngIf="singleData.type?.id === 2">{{item.review}}</td>
           <td>{{item.price}}</td>
           <td>{{item.discount_price}}</td>
           <td>{{item.discount_percentage}}</td>
-          <td>{{item.is_discount}}</td>
           <td>
             <span class="d-flex gap-3">
               <button class="btn btn-warning" (click)="editProgram(item)">

@@ -61,7 +61,12 @@ export class ProductDetailComponent extends BaseComponent<ProductDetail> {
 
   editProgram(item: Program): void {
     this.modalService.show(ProgramFormComponent, {
-      class: 'modal-md', initialState: { model: this._programService, form: item, alertService: this.alertService, editMode: true }
+      class: 'modal-md', initialState: {
+        model: this._programService, form: Object.entries(item).reduce((acc: Partial<Program>, [key, value]) => {
+          if (value !== null && value !== '') acc[key as keyof Program] = value;
+          return acc;
+        }, {} as Partial<Program>), alertService: this.alertService, editMode: true
+      }
     }).content?.event.subscribe(res => res === 200 && this.loadPrograms())
   }
 

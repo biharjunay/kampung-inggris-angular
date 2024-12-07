@@ -13,7 +13,7 @@ export class UserFormComponent extends ModalComponent {
   submit(): void {
     this.loading = true
     const model$ = this.editMode ? this.model.update(this.form.id, this.form) : this.model.save(this.form)
-    model$.subscribe(res => {
+    model$.subscribe(() => {
       this.modalRef.hide()
       this.event.emit(200)
       this.alertService.success(`Sukses ${this.editMode ? 'mengubah' : 'menambahkan'} data`)

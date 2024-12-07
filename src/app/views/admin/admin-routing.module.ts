@@ -5,10 +5,11 @@ import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { ProductComponent } from "./pages/product/product.component";
 import { ProductDetailComponent } from "./pages/product-detail/product-detail.component";
 import { BenefitComponent } from "./pages/benefit/benefit.component";
-import { TestimonialComponent } from "./pages/testimonial/testimonial.component";
+import { TestimonialComponent } from "./pages/product-detail/testimonial/testimonial.component";
 import { ArticleComponent } from "./pages/article/article.component";
 import { VideoGalleryComponent } from "./pages/video-gallery/video-gallery.component";
 import { UserComponent } from "./pages/user/user.component";
+import { roleGuard } from "app/guards/role.guard";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -18,40 +19,56 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        data: { roles: ['admin', 'superadmin'] },
+        canActivate: [roleGuard],
       },
       {
         path: 'products',
         children: [
           {
             path: '',
-            component: ProductComponent
+            component: ProductComponent,
+            data: { roles: ['admin', 'superadmin'] },
+            canActivate: [roleGuard],
           },
           {
             path: ':id',
-            component: ProductDetailComponent
+            component: ProductDetailComponent,
+            data: { roles: ['admin', 'superadmin'] },
+            canActivate: [roleGuard],
           }
         ]
       },
       {
         path: 'benefits',
-        component: BenefitComponent
+        component: BenefitComponent,
+        data: { roles: ['admin', 'superadmin'] },
+        canActivate: [roleGuard],
       },
       {
         path: 'testimonials',
-        component: TestimonialComponent
+        component: TestimonialComponent,
+        data: { roles: ['admin', 'superadmin'] },
+        canActivate: [roleGuard],
       },
       {
         path: 'articles',
-        component: ArticleComponent
+        component: ArticleComponent,
+        data: { roles: ['admin', 'superadmin'] },
+        canActivate: [roleGuard],
       },
       {
         path: 'video-gallery',
-        component: VideoGalleryComponent
+        component: VideoGalleryComponent,
+        data: { roles: ['admin', 'superadmin'] },
+        canActivate: [roleGuard],
       },
       {
         path: 'users',
-        component: UserComponent
+        component: UserComponent,
+        data: { roles: ['superadmin'] },
+        canActivate: [roleGuard],
       }
     ]
   }

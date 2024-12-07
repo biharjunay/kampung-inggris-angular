@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./views/main/main.module').then(m => m.MainModule)
   },
   {
-    path: 'register',
+    path: 'registration',
     loadChildren: () => import('./views/register-form/register-form.module').then(m => m.RegisterFormModule)
   },
   {
@@ -24,8 +24,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
-    anchorScrolling: 'enabled',          // Enables anchor scrolling
-    scrollPositionRestoration: 'enabled', // Restores scroll position when navigating back
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled',
   }),],
   exports: [RouterModule]
 })

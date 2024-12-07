@@ -20,8 +20,6 @@ export class BenefitFormComponent extends ModalComponent implements OnInit {
     this.imageUrl = this.form.icon_url && getUrlImage(this.form.icon_url)
   }
 
-
-
   submit() {
     if (!this.file) {
       this.saveData()

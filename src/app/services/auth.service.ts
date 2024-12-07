@@ -1,8 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import environment from "../environments/environment";
 import { Observable, tap } from "rxjs";
 import { Router } from "@angular/router";
+import environment from "environments/environment";
+import { User } from "@interfaces/user.interface";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -23,7 +24,7 @@ export class AuthService {
     this.router.navigateByUrl('/pages/login')
   }
 
-  public getUser(): any {
+  public getUser(): User | null {
     const user: string | null = localStorage.getItem('user')
     if (user) return JSON.parse(user)
     return null

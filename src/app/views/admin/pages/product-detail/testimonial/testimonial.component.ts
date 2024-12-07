@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { BaseComponent } from "@components/base.component";
 import { Testimonial } from "@interfaces/testimonial.interface";
 import { TestimonialService } from "@services/testimonial.service";
-import { TestimonialFormComponent } from "../modals/testimonial-form/testimonial-form.component";
+import { TestimonialFormComponent } from "../../modals/testimonial-form/testimonial-form.component";
 
 @Component({
   selector: 'admin-testimonial',

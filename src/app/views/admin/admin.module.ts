@@ -18,7 +18,7 @@ import { ProgramFormComponent } from "./pages/modals/program-form/program-form.c
 import { ProductFormComponent } from "./pages/modals/product-form/product-form.component";
 import { BenefitComponent } from "./pages/benefit/benefit.component";
 import { BenefitFormComponent } from "./pages/modals/benefit-form/benefit-form.component";
-import { TestimonialComponent } from "./pages/testimonial/testimonial.component";
+import { TestimonialComponent } from "./pages/product-detail/testimonial/testimonial.component";
 import { TestimonialService } from "@services/testimonial.service";
 import { TestimonialFormComponent } from "./pages/modals/testimonial-form/testimonial-form.component";
 import { ArticleComponent } from "./pages/article/article.component";

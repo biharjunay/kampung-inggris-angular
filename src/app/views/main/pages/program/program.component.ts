@@ -62,4 +62,9 @@ export class ProgramComponent implements OnInit {
     const scrollStep: number = element.offsetWidth
     element.scrollBy({left: direction ? scrollStep : -scrollStep, behavior: 'smooth'})
   }
+
+  openUrlPrograms() {
+    if (this.data?.type.id === 1) window.open('https://registration.englishvillage.academy/register/page/983c21878a5f14f74053c99e76a8f58d55dbed70', '_blank')
+    else window.open('https://registration.englishvillage.academy/register/page/da206892db5f0d3a90daf864fe66769841c6a67e-online?utm_source=Google&utm_medium=Website&utm_campaign=Landingpage&utm_term=Kampung%20Inggris', '_blank')
+  }
 }

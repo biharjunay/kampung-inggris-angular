@@ -35,7 +35,6 @@ export class ImageUploaderDirective {
     }
 
     const file = fileList[0];
-    console.log("Dropped file: ", file);
 
     if (!file.type.startsWith('image/')) {
       console.error('Dropped file is not an image.');

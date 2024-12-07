@@ -30,5 +30,9 @@
     <label for="discount">Discount</label>
     <input type="text" id="discount" class="form-control" [(ngModel)]="form.discount_price">
   </div>
-  <button class="btn btn-success w-100" (click)="saveData()" [disabled]="loading">{{loading ? 'Tunggu' : 'Simpan'}}</button>
+  <!-- <div class="form-check form-switch my-3">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [(ngModel)]="form.is_discount">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Diskon aktif</label>
+  </div> -->
+  <button class="btn btn-success w-100" (click)="saveData()" [disabled]="loading">{{loading ? 'Tunggu' : editMode ? 'Edit' : 'Simpan'}}</button>
 </div>

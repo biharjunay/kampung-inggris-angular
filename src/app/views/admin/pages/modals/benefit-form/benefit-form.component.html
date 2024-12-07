@@ -21,6 +21,6 @@
     <label for="description">Deskripsi</label>
     <textarea class="form-control" name="description" id="description" [(ngModel)]="form.description"></textarea>
   </div>
-  <button class="btn btn-{{editMode ? 'warning' : 'primary'}} w-100" (click)="submit()">{{loading ? 'Tunggu' : editMode ? 'Edit Data' : 'Tambah Data'}}</button>
+  <button class="btn btn-{{editMode ? 'warning' : 'success'}} w-100" (click)="submit()">{{loading ? 'Tunggu' : editMode ? 'Edit Data' : 'Tambah Data'}}</button>
 </div>
 <input #fileInput class="d-none" type="file" name="file" id="file" accept="image/*" (change)="handleImageInput($event)">
