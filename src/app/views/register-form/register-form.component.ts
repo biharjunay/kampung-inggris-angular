@@ -44,7 +44,7 @@ export class RegisterFormComponent implements OnInit {
     if (!this.form.valid) return
     const text = `
       Name: ${this.name?.value} \n
-      Nomor Whatsapp: ${this.phone?.value} \n
+      Nomor Whatsapp: +62${this.phone?.value} \n
       Program: ${this.program?.value} \n
       Information: ${this.information?.value} \n
     `

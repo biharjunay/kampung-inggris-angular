@@ -1,7 +1,7 @@
 <div class="p-3 p-md-5" style="background-color: #F1FFFD;">
   <div class="row" *ngIf="articleDetail">
     <div class="col-md-4 mb-3">
-      <img class="w-100" src="/assets/images/article.png" alt="article">
+      <img class="w-100" [src]="articleDetail.image_url | imageUrl" alt="article">
     </div>
     <div class="col-md-8 mb-3">
       <h4>{{articleDetail.title}}</h4>
