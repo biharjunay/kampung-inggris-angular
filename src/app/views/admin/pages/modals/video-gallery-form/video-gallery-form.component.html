@@ -34,9 +34,13 @@
         <label for="program-name">Nama Program</label>
         <input type="text" id="program-name" class="form-control" [(ngModel)]="form.program_name">
       </div>
-      <div class="form-group mb-3">
-        <label for="video-url">Video Url</label>
-        <input type="text" id="video-url" class="form-control" [(ngModel)]="form.video_url">
+      <div class="mb-3">
+        <label for="basic-url" class="form-label">Video URL</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon3">https://youtube.com/embed/xxxx</span>
+          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" [(ngModel)]="form.video_url" placeholder="Perlu tambahkan /embed/ di antara youtube domain dan unique url">
+        </div>
+        <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
       </div>
     </div>
     <div class="col-lg-6">
