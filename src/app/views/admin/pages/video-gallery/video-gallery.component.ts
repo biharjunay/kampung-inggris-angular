@@ -15,6 +15,7 @@ export class VideoGalleryComponent extends BaseComponent<VideoGallery> {
     super()
     this.filter['page'] = 1
     this.model = _videoGalleryService
+
   }
 
   openLink(url: string): void {

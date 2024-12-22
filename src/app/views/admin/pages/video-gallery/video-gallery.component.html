@@ -35,7 +35,7 @@
           <td>{{item.program_name}}</td>
           <td>{{item.message}}</td>
           <td>
-            <button class="btn btn-sm btn-primary" [popover]="item.video_url" triggers="mouseenter:mouseleave" (click)="openLink(item.video_url)">
+            <button class="btn btn-sm btn-primary" [popover]="item.video_url" triggers="mouseenter:mouseleave" placement="bottom" (click)="openLink(item.video_url)">
               <i class="fa-solid fa-external-link"></i>
             </button>
           </td>

@@ -6,13 +6,13 @@ import { ProgramComponent } from "./pages/program/program.component";
 import { ArticleComponent } from "./pages/article/article.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  // {path: '', redirectTo: '/home', pathMatch: 'full'},
   {
     path: '',
     component: MainComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         component: HomeComponent
       },
       {

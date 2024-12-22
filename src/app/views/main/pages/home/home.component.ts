@@ -9,7 +9,7 @@ import { Product } from "@interfaces/product-interface";
 import { Brand } from "@interfaces/brand.interface";
 import { TestimonialService } from "@services/testimonial.service";
 import { Testimonial } from "@interfaces/testimonial.interface";
-import { Meta, Title } from "@angular/platform-browser";
+import { DomSanitizer, Meta, Title } from "@angular/platform-browser";
 import { VideoGalleryService } from "@services/video-gallery.service";
 import { VideoGallery } from "@interfaces/video-gallery.interface";
 
@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
   @ViewChild('galleryCarouselContainer') public galleryCarouselContainer!: ElementRef<HTMLDivElement>
   public loading: boolean = false
   public heroData: Hero = {
-    registration_image: "",
-    header_image: "",
-    about_image: ""
+    registration_image: {},
+    header_image: {},
+    about_image: {}
   }
   public brandData: Brand[] = []
   public onlineProgramData: Product[] = []
@@ -41,13 +41,14 @@ export class HomeComponent implements OnInit {
     private _videoGalleryService: VideoGalleryService,
     private _title: Title,
     private _meta: Meta,
-    private _router: Router
+    private _router: Router,
+    private _sanitizer: DomSanitizer
   ) {
     _title.setTitle("WE Kampung Inggris")
     _meta.addTags([
       { name: 'description', content: 'WE Kampung Inggris' },
       { name: 'keywords', content: 'WE Kampung Inggris, kampung inggris, pare' },
-      { name: 'author', content: 'WE K' },
+      { name: 'author', content: 'WE Kampung Inggris' },
     ])
   }
 
@@ -86,7 +87,7 @@ export class HomeComponent implements OnInit {
   loadVideoGalleries(): void {
     this._videoGalleryService.getData().subscribe(res => {
       this.videoGalleryData = res.data as VideoGallery[]
-      this.scrollGalleryCarousel()
+      // this.scrollGalleryCarousel()
     })
   }
 
@@ -98,12 +99,25 @@ export class HomeComponent implements OnInit {
     element.scrollBy({ left: direction ? scrollStep : -scrollStep, behavior: 'smooth' })
   }
 
-  scrollGalleryCarousel() {
-    setInterval(() => {
+  scrollGalleryCarousel(direction: boolean) {
+    if (direction) {
       if (this.galleryCarousel === this.videoGalleryData.length - 1) this.galleryCarousel = 0
       else this.galleryCarousel++
-      this.galleryCarouselContainer.nativeElement.style.transform = `translateX(${this.galleryCarousel * -100}%)`
-    }, 3000);
+    }
+    else {
+      if (this.galleryCarousel === 0) this.galleryCarousel = this.videoGalleryData.length - 1
+      else this.galleryCarousel--
+    }
+    this.galleryCarouselContainer.nativeElement.style.transform = `translateX(${this.galleryCarousel * -100}%)`
+    // setInterval(() => {
+    //   if (this.galleryCarousel === this.videoGalleryData.length - 1) this.galleryCarousel = 0
+    //   else this.galleryCarousel++
+    //   this.galleryCarouselContainer.nativeElement.style.transform = `translateX(${this.galleryCarousel * -100}%)`
+    // }, 3000);
+  }
+
+  getVideoURL(url:string) {
+    return this._sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 
   seeDetail(args: any) {
@@ -112,6 +126,10 @@ export class HomeComponent implements OnInit {
 
   openUrl(url: string): void {
     window.open(url, '_blank')
+  }
+
+  createArrayStars(num: number): number[] {
+    return Array.from({length: num}, (_, i) => i)
   }
 
 }

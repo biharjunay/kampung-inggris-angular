@@ -7,7 +7,7 @@ export abstract class ModalComponent {
   public event: EventEmitter<any> = new EventEmitter()
   protected modalRef: BsModalRef = inject(BsModalRef)
 
-  public alertService!: AlertService
+  public alertService: AlertService = inject(AlertService)
 
   public data: any = {}
   public form: any = {}

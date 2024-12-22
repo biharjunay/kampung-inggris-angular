@@ -48,7 +48,7 @@
   <div class="col-lg-5 p-3">
     <div class="position-relative d-flex align-items-center w-100 h-100">
       <img class="h-100 w-100 object-fit-cover rounded-4 position-absolute"
-        style="z-index: -10; filter: brightness(50%);" [src]="heroData.registration_image | imageUrl" alt="img">
+        style="z-index: -10; filter: brightness(50%);" [src]="heroData.registration_image?.image_url| imageUrl" alt="img">
       <div class="p-3 text-white">
         <img src="assets/images/logo-white.png" alt="logo">
         <h4 class="mt-3">Kampung Inggris WE</h4>

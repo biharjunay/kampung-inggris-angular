@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /assets/
+Disallow: /node_modules/
+Disallow: /environment/
+Disallow: /admin/
+
+Allow: /
+
+Sitemap: https://www.your-angular-site.com/sitemap.xml

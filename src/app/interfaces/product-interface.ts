@@ -12,6 +12,7 @@ export interface Product {
   program_title: string
   rating: number | string;
   published_by: string;
+  reviews: string;
 }
 
 export interface ProductDetail extends Product {

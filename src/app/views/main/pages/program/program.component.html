@@ -82,12 +82,12 @@
             <span style="font-size: 14px;">
               <i class="fas fa-layer-plus border p-1 rounded-3"
                 style="color: #4282FF; border-color: #4282FF !important;"></i>
-                {{data?.type?.id === 2 ? data?.benefits?.length + ' Benefits' : item.review + ' Review'}}
+                {{data?.type?.id === 2 ? data?.benefits?.length + ' Benefits' : (item.review ?? '-') + ' Review'}}
             </span>
             <span style="font-size: 14px;">
               <i class="fas fa-user-group border p-1 rounded-3"
                 style="color: #B275F4; border-color: #B275F4 !important;"></i>
-              {{data?.type?.id === 1 ? item.total_student + ' Students' : item.total_minute + ' Minutes'}}
+              {{data?.type?.id === 1 ? (item.total_student || 0) + ' Students' : (item.total_minute ?? 0) + ' Minutes'}}
             </span>
           </div>
           <div class="d-flex justify-content-between mt-3 align-items-center">

@@ -5,13 +5,14 @@
     <div class="card">
       <p class="m-3">Registration Image</p>
       <div class="d-flex flex-column align-items-center">
-        <img [src]="datas.heroData.registration_image | imageUrl" alt="image" height="100px">
+        <img [src]="datas.heroData.registration_image?.image_url | imageUrl" alt="image" height="100px">
         <div class="my-3 d-flex justify-content-center gap-3">
           <button class="btn btn-success" *ngIf="datas.heroData.registration_image"
-            (click)="previewImage(datas.heroData.registration_image)">
+            (click)="previewImage(datas.heroData.registration_image.image_url!)">
             <i class="fas fa-eye"></i>
           </button>
-          <button class="btn btn-warning" (click)="editHeroImage(datas.heroData.registration_image, 'registration_image')">
+          <button class="btn btn-warning"
+            (click)="editHeroImage(datas.heroData.registration_image, 'registration_image')">
             <i class="fas fa-edit"></i>
           </button>
         </div>
@@ -23,10 +24,10 @@
     <div class="card">
       <p class="m-3">Header Image</p>
       <div class="d-flex flex-column align-items-center">
-        <img [src]="datas.heroData.header_image| imageUrl" alt="image" height="100px">
+        <img [src]="datas.heroData.header_image?.image_url | imageUrl" alt="image" height="100px">
         <div class="my-3 d-flex justify-content-center gap-3">
           <button class="btn btn-success" *ngIf="datas.heroData.header_image"
-            (click)="previewImage(datas.heroData.header_image)">
+            (click)="previewImage(datas.heroData.header_image.image_url!)">
             <i class="fas fa-eye"></i>
           </button>
           <button class="btn btn-warning" (click)="editHeroImage(datas.heroData.header_image, 'header_image')">
@@ -41,10 +42,10 @@
     <div class="card">
       <p class="m-3">About Image</p>
       <div class="d-flex flex-column align-items-center">
-        <img [src]="datas.heroData.about_image | imageUrl" alt="image" height="100px">
+        <img [src]="datas.heroData.about_image?.image_url| imageUrl" alt="image" height="100px">
         <div class="my-3 d-flex justify-content-center gap-3">
           <button class="btn btn-success" *ngIf="datas.heroData.about_image"
-            (click)="previewImage(datas.heroData.about_image)">
+            (click)="previewImage(datas.heroData.about_image.image_url!)">
             <i class="fas fa-eye"></i>
           </button>
           <button class="btn btn-warning" (click)="editHeroImage(datas.heroData.about_image, 'about_image')">
@@ -55,7 +56,33 @@
     </div>
   </div>
 
-  <div class="col-md-12">
+  <div class="col-md-12 mb-3">
+    <div class="card rounded-4">
+      <div class="d-flex justify-content-between p-3">
+        <h4 class="fw-bold">Welcome to WE English</h4>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <tbody>
+            <tr>
+              <th class="text-nowrap">Text Left</th>
+              <td>{{datas.heroData.text_left?.value ?? '-'}}</td>
+              <td><button class="btn btn-warning" (click)="editWelcomeText(datas.heroData.text_left, 'text_left')"><i class="fas fa-edit"></i></button></td>
+            </tr>
+            <tr>
+              <th class="text-nowrap">Text Right</th>
+              <td>{{datas.heroData.text_right?.value ?? '-'}}</td>
+              <td><button class="btn btn-warning" (click)="editWelcomeText(datas.heroData.text_right, 'text_right')"><i class="fas fa-edit"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-12 mb-3">
     <div class="card rounded-4">
       <div class="d-flex justify-content-between p-3">
         <h4 class="fw-bold">Affiliated Brand</h4>
@@ -107,6 +134,61 @@
               <td colspan="2" class="text-center">Tidak ada data</td>
             </tr>
             }
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card rounded-4">
+      <div class="d-flex justify-content-between p-3">
+        <h4 class="fw-bold">Why WE English</h4>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Button</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Redirect to</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Button 1</th>
+              <td>{{datas.heroData.button_1?.value ?? '-'}}</td>
+              <td>{{datas.heroData.button_1?.description ?? '-'}}</td>
+              <td>{{datas.heroData.button_1?.redirect_to ?? '-'}}</td>
+              <td>
+                <button class="btn btn-warning" (click)="editWhyWe(datas.heroData.button_1,1)"><i
+                    class="fas fa-edit"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <th>Button 2</th>
+              <td>{{datas.heroData.button_2?.value ?? '-'}}</td>
+              <td>{{datas.heroData.button_2?.description ?? '-'}}</td>
+              <td>{{datas.heroData.button_2?.redirect_to ?? '-'}}</td>
+              <td>
+                <button class="btn btn-warning" (click)="editWhyWe(datas.heroData.button_2,2)"><i
+                    class="fas fa-edit"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <th>Button 3</th>
+              <td>{{datas.heroData.button_3?.value ?? '-'}}</td>
+              <td>{{datas.heroData.button_3?.description ?? '-'}}</td>
+              <td>{{datas.heroData.button_3?.redirect_to ?? '-'}}</td>
+              <td>
+                <button class="btn btn-warning" (click)="editWhyWe(datas.heroData.button_3,3)"><i
+                    class="fas fa-edit"></i></button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

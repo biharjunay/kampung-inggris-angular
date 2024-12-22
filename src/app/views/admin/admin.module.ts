@@ -30,6 +30,8 @@ import { VideoGalleryFormComponent } from "./pages/modals/video-gallery-form/vid
 import { UserService } from "@services/user.service";
 import { UserComponent } from "./pages/user/user.component";
 import { UserFormComponent } from "./pages/modals/user-form/user-form.component";
+import { WhyWeFormComponent } from "./pages/modals/why-we-form/why-we-form.component";
+import { WelcomeTextFormComponent } from "./pages/modals/welcome-text-form/welcome-text-form.component";
 
 @NgModule({
   imports: [
@@ -54,10 +56,11 @@ import { UserFormComponent } from "./pages/modals/user-form/user-form.component"
     VideoGalleryComponent,
     VideoGalleryFormComponent,
     UserComponent,
-    UserFormComponent
+    UserFormComponent,
+    WhyWeFormComponent,
+    WelcomeTextFormComponent
   ],
   providers: [
-    HeroService,
     BrandService,
     AlertService,
     BsModalService,
@@ -67,7 +70,8 @@ import { UserFormComponent } from "./pages/modals/user-form/user-form.component"
     TestimonialService,
     ArticleService,
     VideoGalleryService,
-    UserService
+    UserService,
+    HeroService,
   ]
 })
-export class AdminModule {}
+export class AdminModule { }

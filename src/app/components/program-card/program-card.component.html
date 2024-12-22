@@ -12,7 +12,7 @@
       </span>
       <span style="font-size: 14px;">
         <i class="fas fa-user-group border p-1 rounded-3" style="color: #B275F4; border-color: #B275F4 !important;"></i>
-        {{data.total_student || 0}}+ Students
+        {{data.type.id === 1 ? (data.total_student || 0) : (data.reviews || 0)}} {{data.type.id === 1 ? '+ Students' : 'Reviews'}}
       </span>
     </div>
   </div>

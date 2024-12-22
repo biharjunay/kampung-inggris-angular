@@ -18,9 +18,9 @@ export class RegisterFormComponent implements OnInit {
   })
   public programData: Program[] = []
   public heroData: Hero = {
-    registration_image: "",
-    header_image: "",
-    about_image: ""
+    registration_image: {},
+    header_image: {},
+    about_image: {}
   }
 
   constructor(

@@ -1,0 +1,24 @@
+<div class="modal-header d-flex justify-content-between">
+  <h4 class="mb-0">Edit Why WE</h4>
+  <button class="btn" (click)="closeModal()">
+    <i class="fas fa-xmark"></i>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group mb-3">
+    <label for="title">Title</label>
+    <input type="text" id="title" class="form-control" [(ngModel)]="form.value">
+  </div>
+  <div class="form-group mb-3">
+    <label for="description">Description</label>
+    <textarea name="description" id="description" class="form-control" [(ngModel)]="form.description" placeholder="Optional"></textarea>
+  </div>
+  <div class="form-group mb-3">
+    <label for="title">Redirect Url</label>
+    <input type="text" class="form-control" [(ngModel)]="form.redirect_to">
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning float-end" (click)="saveData()">{{ loading ? 'Tunggu' : 'Edit data'}}</button>
+</div>

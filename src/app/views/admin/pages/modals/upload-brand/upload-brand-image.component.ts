@@ -1,11 +1,8 @@
-import { AfterViewInit, ChangeDetectorRef, Component, inject, OnInit, RendererFactory2 } from "@angular/core";
-import { AlertSuccessComponent } from "@components/alert-success/alert-success.component";
+import { AfterViewInit, ChangeDetectorRef, Component } from "@angular/core";
 import { ModalComponent } from "@components/modal.component";
 import { UploadResponse } from "@interfaces/interface";
-import { AlertService } from "@services/alert.service";
 import { UploadImageService } from "@services/upload-image.service";
 import { getUrlImage } from "app/helpers/image-url";
-import { BsModalService } from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'upload-brand-image',

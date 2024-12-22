@@ -7,6 +7,8 @@ import { BrandService } from "@services/brand.service";
 import { Response } from "@interfaces/interface";
 import { UploadHeroImageComponent } from "../modals/upload-hero/upload-hero-image.component";
 import { UploadBrandImageComponent } from "../modals/upload-brand/upload-brand-image.component";
+import { WhyWeFormComponent } from "../modals/why-we-form/why-we-form.component";
+import { WelcomeTextFormComponent } from "../modals/welcome-text-form/welcome-text-form.component";
 
 @Component({
   selector: 'admin-dashboard',
@@ -89,5 +91,17 @@ export class DashboardComponent extends BaseComponent {
         this.loadDependencies()
       }
     })
+  }
+
+  editWelcomeText(currForm: any, key: string) {
+    this.modalService.show(WelcomeTextFormComponent, {
+      class: "modal-lg", initialState: {form: {...currForm, key}}
+    }).content?.event.subscribe(res => res === 200 && this.loadHeroData())
+  }
+
+  editWhyWe(currForm: any, section: number) {
+    this.modalService.show(WhyWeFormComponent, {
+      class: "modal-lg", initialState: {form: {...currForm, key: `button_${section}`}}
+    }).content?.event.subscribe(res => res === 200 && this.loadHeroData())
   }
 }

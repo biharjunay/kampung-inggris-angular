@@ -1,8 +1,8 @@
 import { Environment } from "@interfaces/env.interface";
 
 export default {
-  appUrl: 'https://api.kampunginggriswe.com/api',
-  storageUrl: 'https://api.kampunginggriswe.com/storage',
+  appUrl: 'http://localhost:8000/api',
+  storageUrl: 'http://localhost:8000/storage',
   version: '1.0',
   production: false
 } satisfies Environment

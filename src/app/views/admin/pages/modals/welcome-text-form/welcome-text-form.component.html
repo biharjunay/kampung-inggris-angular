@@ -1,0 +1,16 @@
+<div class="modal-header d-flex justify-content-between">
+  <h4 class="mb-0">Edit Why WE</h4>
+  <button class="btn" (click)="closeModal()">
+    <i class="fas fa-xmark"></i>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group mb-3">
+    <label for="text">Teks</label>
+    <textarea name="text" id="text" class="form-control" [(ngModel)]="form.value" placeholder="Optional"></textarea>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning float-end" (click)="saveData()">{{ loading ? 'Tunggu' : 'Edit data'}}</button>
+</div>
