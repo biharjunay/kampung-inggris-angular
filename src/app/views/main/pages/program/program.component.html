@@ -102,24 +102,44 @@
 </div>
 
 <div class="my-5 px-3 px-md-5">
-  <h4 class="fw-bold mb-3">Program {{data?.type?.name}}</h4>
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="fw-bold mb-3">Program {{data?.type?.name}}</h4>
+    <div class="d-flex gap-3 d-sm-none">
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;"
+        (click)="scrollCarousel(false, carousel)">
+        <i class="fas fa-angle-left"></i>
+      </button>
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;"
+        (click)="scrollCarousel(true, carousel)">
+        <i class="fas fa-angle-right"></i>
+      </button>
+    </div>
+  </div>
   <div class="d-flex align-items-center gap-3">
-    <div>
-      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;" (click)="scrollCarousel(false, carousel)">
+    <div class="d-none d-sm-block">
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;"
+        (click)="scrollCarousel(false, carousel)">
         <i class="fas fa-angle-left"></i>
       </button>
     </div>
-    <div id="carousel" #carousel class="overflow-x-hidden">
-      <div class="d-flex gap-4">
-        @if (productLoading) {
-        <app-program-loading *ngFor="let item of [1,2,3,4]"></app-program-loading>
+    <div id="carousel" class="overflow-hidden flex-grow-1" #carousel>
+      <div class="carousel-container d-flex gap-0 gap-sm-4">
+        @if (loading) {
+        @for (item of [1,2,3,4]; track item) {
+        <app-program-loading></app-program-loading>
+        }
         } @else {
-        <app-program-card *ngFor="let item of productData" [data]="item" (clickDetail)="seeDetail($event)"></app-program-card>
+        @for (item of productData; track $index) {
+        <span class="carousel-card">
+          <app-program-card [data]="item" (clickDetail)="seeDetail($event)"></app-program-card>
+        </span>
+        }
         }
       </div>
     </div>
-    <div>
-      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;" (click)="scrollCarousel(true, carousel)">
+    <div class="d-none d-sm-block">
+      <button class="btn btn-outline-success rounded-circle" style="width: 40px; height: 40px;"
+        (click)="scrollCarousel(true, carousel)">
         <i class="fas fa-angle-right"></i>
       </button>
     </div>

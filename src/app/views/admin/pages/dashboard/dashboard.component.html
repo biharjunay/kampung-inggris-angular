@@ -154,7 +154,7 @@
               <th>Button</th>
               <th>Title</th>
               <th>Description</th>
-              <th>Redirect to</th>
+              <th>Image</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -163,7 +163,7 @@
               <th>Button 1</th>
               <td>{{datas.heroData.button_1?.value ?? '-'}}</td>
               <td>{{datas.heroData.button_1?.description ?? '-'}}</td>
-              <td>{{datas.heroData.button_1?.redirect_to ?? '-'}}</td>
+              <img [src]="datas.heroData.button_1?.image_url | imageUrl" alt="image" height="100px">
               <td>
                 <button class="btn btn-warning" (click)="editWhyWe(datas.heroData.button_1,1)"><i
                     class="fas fa-edit"></i></button>

@@ -27,7 +27,6 @@ export class ImageUploaderDirective {
     this.backgroundColor = 'transparent';
 
     let fileList = event.dataTransfer?.files;
-    console.log(fileList)
     if (!fileList || fileList.length === 0) {
       console.error("No files found in the drop event.");
       this._alertService.error('Please drop an image file.');

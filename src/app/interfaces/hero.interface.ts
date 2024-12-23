@@ -7,6 +7,7 @@ export interface Hero {
   button_1?: HeroOption
   button_2?: HeroOption
   button_3?: HeroOption
+  [key: string]: HeroOption | undefined
 }
 
 interface HeroOption {

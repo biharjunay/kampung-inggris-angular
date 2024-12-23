@@ -15,10 +15,17 @@
     <textarea name="description" id="description" class="form-control" [(ngModel)]="form.description" placeholder="Optional"></textarea>
   </div>
   <div class="form-group mb-3">
-    <label for="title">Redirect Url</label>
-    <input type="text" class="form-control" [(ngModel)]="form.redirect_to">
+    <label for="">Upload Image</label>
+    <div class="border border-primary w-100 rounded-3 d-flex justify-content-center align-items-center p-3" (click)="fileInput.click()" imgUpload (dropFiles)="handleDropImage($event)" style="border-style: dashed !important; height: 400px; cursor: pointer;">
+      <div class="d-flex flex-column text-center" *ngIf="!imageUrl">
+        <i class="fas fa-upload fs-1"></i>
+        <span class="fs-4 mt-3">Upload Gambar</span>
+      </div>
+      <img class="w-100 object-fit-contain h-100" *ngIf="imageUrl" [src]="imageUrl" alt="empty image">
+    </div>
   </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-warning float-end" (click)="saveData()">{{ loading ? 'Tunggu' : 'Edit data'}}</button>
+  <button class="btn btn-warning float-end" (click)="submit()">{{ loading ? 'Tunggu' : 'Edit data'}}</button>
 </div>
+<input #fileInput class="d-none" type="file" name="file" id="file" accept="image/*" (change)="handleImageInput($event)">

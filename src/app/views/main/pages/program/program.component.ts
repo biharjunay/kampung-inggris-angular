@@ -50,7 +50,7 @@ export class ProgramComponent implements OnInit {
 
   async seeDetail(args: any) {
     const url = this._router.url.match(/^\/[^\/]+\/?/)![0]
-    await this._router.navigateByUrl('/home', { skipLocationChange: true })
+    await this._router.navigateByUrl('/', { skipLocationChange: true })
     this._router.navigate([url + args.id], {replaceUrl: true});
     this._viewportScroller.scrollToPosition([0, 0]);
   }

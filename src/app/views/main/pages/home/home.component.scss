@@ -26,7 +26,8 @@
 .brand-logo {
   object-fit: contain;
   flex-shrink: 0;
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
   filter: grayscale(100%);
 
   &:hover {
@@ -39,6 +40,7 @@
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -50,4 +52,17 @@
 
 .carousel {
   transition: transform .5s ease;
+}
+
+
+@media screen and (max-width: 576px) {
+  .carousel-card {
+    flex: 0 0 100%;
+  }
+
+  #video-box {
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: auto !important;
+  }
 }

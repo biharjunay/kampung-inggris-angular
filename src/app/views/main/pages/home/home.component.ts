@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   public offlineProgramData: Product[] = []
   public testimonialData: Testimonial[] = []
   public videoGalleryData: VideoGallery[] = []
-
+  public selectedWEEnglish = "button_1"
   public galleryCarousel: number = 0
 
   constructor(
@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
     /**
      * direction true for right and false for left
      */
-    const scrollStep: number = element.clientWidth
+    const scrollStep: number = element.children[0]?.clientWidth ?? 0
     element.scrollBy({ left: direction ? scrollStep : -scrollStep, behavior: 'smooth' })
   }
 

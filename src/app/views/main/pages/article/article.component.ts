@@ -50,7 +50,6 @@ export class ArticleComponent implements OnInit {
   }
 
   updateSeoTags() {
-    console.log(this.articleDetail)
     this._title.setTitle(this.articleDetail!.title)
     this._meta.addTag({
       name: "description",
